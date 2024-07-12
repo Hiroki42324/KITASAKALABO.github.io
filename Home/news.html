@@ -1,0 +1,115 @@
+<!Doctype HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/conf1.css">
+    <script src="./js/slick.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
+    <title>医用画像処理研究室</title>
+</head>
+
+<body>
+<div class="main">
+<!-- メニュー欄 -->
+<nav align="right">
+    <div class="nvlogo" align="left"><h2><a href="./index.html">Lab.KITASAKA</a><h2></div>
+    <div class="navlink">
+        <ul>
+            <li id="study"><a href="./gararry.html">STUDY</a>
+                <ol>
+                    <!-- メニュー欄の詳細 -->
+                    <div id="navdet-g" class='dhidden'>
+                        <li><a href="./gararry.html?cat=study">研究一覧</a></li>
+                        <li><a href="./gararry.html?cat=production">制作一覧</a></li>
+                        <li><a href="./news.html">活動情報</a></li>
+                        <li><a href="./work.html">成果一覧</a></li>
+                    </div>
+                </ol>
+            </li>
+            <li><a href="https://fpms.aitech.ac.jp/Main.php?action=profile&type=detail&tchCd=4d7a67784e7a63324d4441774d412e2e&pre_action=&pre_andor=&andor=&pre_key1=&key1=&pre_key2=&key2=&pre_key3=&key3=&pre_Facultyk=&Facultyk=&pre_kkb_c=&kkb_c=&pre_kbnCode=&kbnCode=&pre_fName=&fName=&pre_gName=&gName=&pre_FacultyVal=&FacultyVal=&pre_DepartmentVal=&DepartmentVal=&pre_job=&job=&pre_Society=&Society=&pre_FieldKeyword=&FieldKeyword=&pre_gsk_author=&gsk_author=&pre_gsk_title=&gsk_title=&pre_offset=&offset=&pre_cntno=&cntno=&searched=">FACULTY</a>
+            </li>
+            <li id="school"><a href="#">CONTACT</a>
+                <ol>
+                    <!-- メニュー欄の詳細 -->
+                    <div id="navdet-s" class='dhidden'>
+                        <li><a href="https://www.ait.ac.jp/">学校情報</a></li>
+                        <li><a href="https://www.ait.ac.jp/faculty/info-science/index.html#headline-1421584671">学部情報</a></li>
+                        <li><a href="./labo.html">研究室情報</a></li>
+                    </div>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- 見出しタイトル -->
+<div id="bodyTitle">
+    <div class="Title"><h1>北坂研究室</h1><h3>Medical Image Processing Laboratory</h3></div>
+    <div id="top1" align="center"><img src="./images/top/topimg1.png" alt="" id="topimg1"></div>
+    <div id="top2"align="center"><img src="./images/top/topimg2.png" alt="" id="topimg2"></div>
+    <div id="top3"align="center"><img src="./images/top/topimg3.png" alt="" id="topimg3"></div>
+    <div id="bgmovie-mask"></div>
+    <!-- <div id="bgmovie"></div> -->
+</div>
+
+<!-- ニュース欄 -->
+<div id="news_g">
+<h2>News</h2>
+<div id="news_garrary" align="center">
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/news/items');
+                const items = await response.json();
+    
+                const itemsList = document.getElementById('news_garrary');
+                items.forEach(item => {
+                    const nli = document.createElement('li');
+                    nli.classList.add('newsitem_g');
+                    nli.innerHTML = `
+                        <a href='${item.url}'>
+                            <div class="newsday_g">${item.day}</div>
+                            <div class="newscontent_g">${item.news}</div>
+                        </a>`;
+                    itemsList.appendChild(nli);
+                });
+            } catch (error) {
+                console.error('アイテムの取得エラー:', error);
+            }
+        });
+    </script>
+</div>
+</div>
+
+<!-- スクロールボタン -->
+<div class="bottun">
+    <div id="upBtn">↑</div>
+    <div id="downBtn">↓</div>
+</div>
+
+<!-- フッター -->
+<div id="footer" align="center">
+<div class="foottext">
+    <div class="footerlink">
+        <ul>
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./gararry.html">研究・制作</a></li>
+            <li><a href="">お問い合わせ</a></li>
+        </ul>
+    </div>
+    <br><br><br><br><br><br>
+    © 2024 医用画像処理研究室.
+</div>
+</div>
+<script src="./js/app.js"></script>
+</div>
+</body>
+</html>
