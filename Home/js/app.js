@@ -11,8 +11,10 @@ let Fpos = Frec.bottom;
 
 //メニュー詳細の表示設定
 let school = document.getElementById('school');
+let scpos = school.getBoundingClientRect();
 let navdets = document.getElementById('navdet-s');
 let study = document.getElementById('study');
+let stpos = study.getBoundingClientRect();
 let navdetg = document.getElementById('navdet-g');
 
 school.addEventListener("mouseover", function(){
@@ -23,9 +25,11 @@ school.addEventListener("mouseout", function(){
 });
 study.addEventListener("mouseover", function(){
     navdetg.classList.remove('dhidden');
+    navdetg.translateY = scpos.left;
 });
 study.addEventListener("mouseout", function(){
     navdetg.classList.add('dhidden');
+    navdetg.translateX = scpos.left;
 });
 
 //スクロールボタン

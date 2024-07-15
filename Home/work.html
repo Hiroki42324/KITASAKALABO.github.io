@@ -51,9 +51,9 @@
 </nav>
 
 <!-- 活動情報 -->
-<div id="pubs">
+<div id="publications">
 <h2>成果一覧</h2>
-<div id="publications" align="center">
+<div id="publications_b" align="center">
     <h3>書籍</h3>
     <ul id="pub_books"></ul>
     <script>
@@ -69,7 +69,33 @@
                     const nli = document.createElement('li');
                     nli.classList.add('publication');
                     nli.innerHTML = `
-                        <div class="pub_book">${item.event}</div>`;
+                        <div class="pub">${item.event}</div>`;
+                    itemsList.appendChild(nli);
+                    };
+                });
+            } catch (error) {
+                console.error('アイテムの取得エラー:', error);
+            }
+        });
+    </script>
+</div>
+<div id="publications_p" align="center">
+    <h3>書籍</h3>
+    <ul id="pub_papers"></ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/event/items');
+                const items = await response.json();
+                
+                const itemsList = document.getElementById('pub_papers');
+
+                items.forEach(item => {
+                    if(item.cat == 2){
+                    const nli = document.createElement('li');
+                    nli.classList.add('publication');
+                    nli.innerHTML = `
+                        <div class="pub">${item.event}</div>`;
                     itemsList.appendChild(nli);
                     };
                 });
